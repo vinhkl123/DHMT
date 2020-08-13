@@ -376,7 +376,7 @@ const int screenHeight = 250;
 void init(void)
 {
 	glClearColor(1.0, 1.0, 1.0, 1.0); //clear white
-	
+
 	glShadeModel(GL_FLAT);
 }
 void display()
@@ -384,7 +384,7 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT); //clear color buffer
 								  //glColor3f(1.0, 1.0, 1.0); //white
 	glColor3f(0.0, 0.0, 0.0); //black
-	
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	glBegin(GL_TRIANGLE_STRIP);
@@ -394,7 +394,7 @@ void display()
 	//
 	////glVertex2i(300, 100); //v3
 	//glVertex2i(270, 150); //v4
-	////glVertex2i(350, 250); //v5 
+	////glVertex2i(350, 250); //v5
 
 	////glVertex2i(50, 50); //v0
 	//glVertex2i(100, 150); //v2
@@ -406,7 +406,7 @@ void display()
 	////glVertex2i(450, 150); //v5
 	//---------------------------------------------------------------
 
-*/	
+*/
 
 //bai9 
 /*const int screenWidth = 640;
@@ -1266,7 +1266,7 @@ int main(int argc, char **argv)
 
 //======================================================LAB3=================================
 //traidat
-/*
+
 static int year = 0, day = 0;
 
 void init(void)
@@ -1281,7 +1281,7 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix(); // lưu lại ma trận hiện hành
-	glColor3f(1.0, 0, 0); // thiết lập màu vẽ là màu đỏ
+	glColor3f(0.0, 1.0, 0.0); // thiết lập màu vẽ là màu đỏ
 	glutWireSphere(1.0, 20, 16); // vẽ mặt trời là một lưới cầu có tâm tại
 
 	glRotatef((GLfloat)year, 0.0, 1.0, 0.0); // quay một góc tương ứng với thời gian trong năm
@@ -1292,8 +1292,11 @@ void display(void)
 	glPopMatrix(); // phục hồi lại ma trận hiện hành cũ: tương ứng với quay	lại vị trí ban đầu
 
 	glutSwapBuffers();
-	day = (day + 1) % 360;
-	year = (year + 1) % 360;
+	
+		day = (day + 1) % 360;
+	
+	year = (year - 1) % 360;
+	
 	glutPostRedisplay();
 }
 
@@ -1310,29 +1313,27 @@ void reshape(int w, int h)
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); // thiết lập view
 }
 
-//void keyboard(unsigned char key, int x, int y)
-//{
-//	switch (key) {
-//	case 'd':
-//		day = (day + 10) % 360;
-//		glutPostRedisplay();
-//		break;
-//	case 'D':
-//		day = (day - 10) % 360;
-//		glutPostRedisplay();
-//		break;
-//	case 'y':
-//		year = (year + 5) % 360;
-//		glutPostRedisplay();
-//		break;
-//	case 'Y':
-//		year = (year - 5) % 360;
-//		glutPostRedisplay();
-//		break;
-//	default:
-//		break;
-//	}
-//}
+void keyboard(unsigned char key, int x, int y)
+
+{
+	///*switch (key)
+	//{
+	//case 'q':    day = (day + 10) % 360;
+	//	glutPostRedisplay();
+	//	break;
+	//
+	//case 'e':    year = (year + 10) % 360;
+	//	glutPostRedisplay();
+	//	break;
+	//case 'r':    year = (year - 10) % 360;
+	//	glutPostRedisplay();
+	//	break;
+	//default:    break;*/
+	//
+	//}
+}
+static bool rotate = false;
+
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
@@ -1343,34 +1344,14 @@ int main(int argc, char** argv)
 	init();
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	//glutKeyboardFunc(keyboard);
+	glutKeyboardFunc(keyboard);
+
 	glutMainLoop();
 	return 0;
-}*/
-//demosdl
-/*#include <stdio.h>
-int main(int argc, char* argv[])
-{
-	SDL_Window* window; // Khai báo con trỏ đến cửa sổ SDL
-	SDL_Init(SDL_INIT_VIDEO); // Khởi tạo thư viện con đồ họa
-	// Tạo một cửa sổ với các tham số như sau
-	window = SDL_CreateWindow(
-		"Cửa sổ SDL 2", // tiêu đề
-		SDL_WINDOWPOS_UNDEFINED, // tọa độ x
-		SDL_WINDOWPOS_UNDEFINED, // tọa độ y
-		640, 480, // chiều rộng, cao (pixels)
-		SDL_WINDOW_SHOWN);
-	// Kiểm tra việc tạo cửa sổ có thành công hay không
-	if (window == NULL) {
-		printf("Không thể khởi tạo cửa sổ: %s\n", SDL_GetError());
-		return 1;
-	}
-	SDL_Delay(3000); // Chờ 3 giây
-	SDL_DestroyWindow(window); // Đóng và hủy bỏ cửa sổ
-	SDL_Quit(); // Kết thúc phiên làm việc SDL 2
-	return 0;
-}*/
+}
 
-//bai1
+
+
+
 
 
